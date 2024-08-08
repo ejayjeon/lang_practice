@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TensorFlow.js Tutorial - lemon</title>
+
+  <!-- Import TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+
+
+</head>
+
+<body>
+  <script>
+    // 로컬 스토리지에 저장한 모델 이용하기
+    tf.loadLayersModel('localstorage://lemon').then(function (model) {
+
+      // 모델의 로딩이 끝난 후에, 이것을 pridict
+      var 다음주온도 = [15, 16, 17, 18, 19, 30, 25, 34, 38, 24, 30]
+      var 다음주원인 = tf.tensor(다음주온도);
+      var 다음주결과 = model.predict(다음주원인);
+      다음주결과.print();
+
+      // vis: 학습정도를 비주얼하게 볼 수 있도록 도와주는 라이브러리
+      // tfvis.show.modelSummary({ name: 'model Summary', tab: 'model' }, model);
+
+    });
+
+
+
+
+  </script>
+</body>
+
+</html>
